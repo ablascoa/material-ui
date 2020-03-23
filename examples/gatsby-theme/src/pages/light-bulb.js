@@ -3,9 +3,9 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby-theme-material-ui';
-import ProTip from '../components/ProTip';
+import ProTip, { LightBulbIcon } from '../components/ProTip';
 
-function Copyright() {
+const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -16,24 +16,29 @@ function Copyright() {
       {'.'}
     </Typography>
   );
-}
+};
 
-export default function Index() {
+const NUM_LIGHTBULBS = 2000;
+const LightBulbPage = () => {
+  let lightBulbs = [];
+  for (let i = 0; i < NUM_LIGHTBULBS; i++) {
+    lightBulbs.push(<LightBulbIcon />);
+  }
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="lg">
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
           NNUUNNUU NNUUNNUU NNUUNNUU NNUUNNUU NNUUNNUU NNUUNNUU
         </Typography>
         <Link to="/about" color="secondary">
-          Go to the about pagesss
+          Go to the about page
         </Link>
-        <Link to="/no-data">Programatic no-data</Link>
-        <Link to="/light-bulb">Light bulb</Link>
-        <Link to="/no-data">Programatic no-data</Link>
         <ProTip />
         <Copyright />
       </Box>
+      {lightBulbs}
     </Container>
   );
-}
+};
+
+export default LightBulbPage;
